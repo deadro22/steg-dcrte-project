@@ -1,0 +1,215 @@
+:root {
+  --main-bg-color: #292e36;
+  --sec-bg-color: #001e40;
+  --primary-text-color: white;
+  --secondary-text-color: rgba(255, 255, 255, 0.534);
+  --btn-primary--: rgb(37, 129, 117);
+  --btn-secondary--: rgb(53, 187, 169);
+}
+
+body {
+  background-color: var(--sec-bg-color);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  color: white;
+}
+
+.mainAppHeader {
+  padding: 20px 50px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.appHeaderPres {
+  display: flex;
+  align-items: center;
+}
+
+#appHeaderText {
+  margin-left: 20px;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.viewSelectorHeader {
+  margin-top: 30px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewSelectCp {
+  text-transform: uppercase;
+}
+
+.viewSelectCp > p {
+  color: var(--secondary-text-color);
+  font-weight: 500;
+}
+
+.st-btn-none {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.btn-toggle-view {
+  color: white;
+  bottom: 0;
+  margin-bottom: 70px;
+  font-size: 15px;
+  background-color: var(--btn-primary--);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+.btn-toggle-compare {
+  color: white;
+  bottom: 0;
+  font-size: 15px;
+  background-color: var(--btn-primary--);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-toggle-cc {
+  color: white;
+  bottom: 0;
+  font-size: 17px;
+  background-color: var(--btn-primary--);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-toggle-cc:hover {
+  background-color: var(--btn-secondary--);
+}
+
+#viewSelectBtn {
+  border-bottom: 2px solid var(--btn-secondary--);
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(0, 224, 224);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.min-maxSelector {
+  font-size: 15px;
+  color: white;
+  border-radius: 100%;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  border: 2px solid white;
+  cursor: pointer;
+  margin: 1em;
+}
+
+.min-maxSelector:hover {
+  background-color: white;
+  color: var(--main-bg-color);
+}
+
+.chartInfoContainer {
+  border-bottom: 1px solid var(--secondary-text-color);
+  display: flex;
+  margin: 10px 50px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.chartInfoContainer::after {
+  content: "Donnés en temps réel";
+  position: absolute;
+  font-size: 13px;
+  margin-top: 80px;
+  color: var(--secondary-text-color);
+}
+
+.chartStatInfoC {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  padding: 10px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.chartStatInfoC:hover {
+  border-bottom: 5px solid var(--secondary-text-color);
+  cursor: pointer;
+}
+
+.chartStatInfoC > p {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: var(--secondary-text-color);
+}
+
+.chartStatInfoC > p > svg {
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+.chartStatInfoC > h2 {
+  font-weight: normal;
+}
+
+.chartStatInfoC > h2 > span {
+  font-size: 14px;
+}
+
+.calendarDateC {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  padding: 0.5em 0em;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--btn-secondary--);
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.calendarDateC::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(0, 224, 224);
+}
+
+.calendarDateC:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: rgb(0, 224, 224);
+}
+
+.calendarDateC::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgb(0, 224, 224);
+}
