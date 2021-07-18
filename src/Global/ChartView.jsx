@@ -15,31 +15,32 @@ import { WbSunny } from "@material-ui/icons";
 
 const ChartView = ({ showHeader, toggleCompare, compare }) => {
   const renderColors = {
-    chart1: { in: "#496699", out: "#006380" },
+    chart1: { in: "#278c43", out: "#36c95f" },
     chart2: "#F9F871",
     chart3: "red",
   };
 
-  const makeObj = (count) => {
-    let dataPoints = [];
-    let y = Math.floor(Math.random() * 5000);
-    let hrc = 0;
-    const wt = 3;
-    for (var i = 0; i <= count * 2; i += 1) {
-      y = Math.sin(i) * 0.05 * Math.random() * 5000 + 2000;
-
-      dataPoints.push({
-        x: hrc,
-        y: Math.floor(y),
-      });
-      hrc += 0.5;
+  const convertObjToArrObj = (ar, idx) => {
+    const fnO = [];
+    const tempKey = Object.keys(ar[idx]);
+    const tempVal = Object.values(ar[idx]);
+    for (let i = 0; i < tempKey.length; i++) {
+      const num = tempKey[i].replace(":", ".");
+      const ldf = num.split(".");
+      const finH = ldf[0] + "." + (ldf[1] === "00" ? ldf[1] : "50");
+      fnO.push({ x: finH, y: tempVal[i] });
     }
-    return dataPoints;
+
+    return fnO;
   };
 
-  const [data, setData] = useState(makeObj(24));
-  const [data2, setData2] = useState(makeObj(24));
-  const [data3, setData3] = useState(makeObj(24));
+  const [data, setData] = useState(convertObjToArrObj(dataFile["1/7/2021"], 0));
+  const [data2, setData2] = useState(
+    convertObjToArrObj(dataFile["1/7/2021"], 1)
+  );
+  const [data3, setData3] = useState(
+    convertObjToArrObj(dataFile["1/7/2021"], 0)
+  );
 
   const [showInfo, setShowInfo] = useState(0);
   const [yValue, setyValue] = useState(data[0].y);
@@ -78,10 +79,12 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
     setShowIndicator(true);
   };
 
-  const changeDataFromDateSelection = () => {
-    setData(makeObj(24));
-    setData2(makeObj(24));
-    setData3(makeObj(24));
+  const changeDataFromDateSelection = (date) => {
+    if (dataFile[date]) {
+      setData(convertObjToArrObj(dataFile[date], 0));
+      setData2(convertObjToArrObj(dataFile[date], 1));
+      setData3(convertObjToArrObj(dataFile[date], 0));
+    }
   };
 
   const findMinValue = () => {
@@ -201,10 +204,12 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
           >
             <div className="chartViewIndicator">
               <h1 style={{ margin: 5 }}>{`${
-                Math.floor(showInfo).toString().length === 1
-                  ? "0" + Math.floor(showInfo)
-                  : Math.floor(showInfo)
-              }:00`}</h1>
+                showInfo.toString().split(".")[0] +
+                ":" +
+                (showInfo.toString().split(".")[1] === "00"
+                  ? showInfo.toString().split(".")[1]
+                  : "30")
+              }`}</h1>
             </div>
           </Crosshair>
         )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { frCA, arDZ } from "date-fns/locale";
+import { frCA } from "date-fns/locale";
 import { DatePicker } from "react-nice-dates";
 import "react-nice-dates/build/style.css";
 import { format } from "date-fns/esm";
@@ -11,17 +11,24 @@ const AppHeader = ({
   showHeaderTitle,
   toggleCompare,
 }) => {
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(new Date(2021, 6, 1));
   const changeDateChart = (date) => {
     setDate(date);
-    changeDataFromDateSelection();
+    const currDate = format(date, "d/M/yyyy");
+    changeDataFromDateSelection(currDate);
   };
   return (
     <div>
       <div className="viewSelectorHeader">
         <div className="viewSelectCp">
           <p>période</p>
-          <DatePicker date={date} onDateChange={changeDateChart} locale={frCA}>
+          <DatePicker
+            minimumDate={new Date(2021, 6, 1)}
+            maximumDate={new Date(2021, 6, 15)}
+            date={date}
+            onDateChange={changeDateChart}
+            locale={frCA}
+          >
             {({ inputProps, focused }) => (
               <div id="viewSelectBtn">
                 <input
