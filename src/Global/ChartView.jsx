@@ -146,7 +146,7 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
       <FlexibleXYPlot
         height={500}
         xDomain={[0, 24]}
-        yDomain={[0, 6000]}
+        yDomain={[1500, 6000]}
         margin={50}
         onMouseEnter={() => {
           setShowIndicator(true);
