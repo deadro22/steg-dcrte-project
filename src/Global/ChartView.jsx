@@ -12,6 +12,7 @@ import AppHeader from "../Global/AppHeader";
 import InfoContainer from "../Global/InfoContainer";
 import dataFile from "../data.json";
 import { WbSunny } from "@material-ui/icons";
+import axios from "axios";
 
 const ChartView = ({ showHeader, toggleCompare, compare }) => {
   const renderColors = {
@@ -47,9 +48,10 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
   const [secYValue, setSecYValue] = useState(data2[0].y);
   const [showIndicator, setShowIndicator] = useState(false);
   const [thirdYValue, setThirdYValue] = useState(data3[0].y);
-  const [maxMinValue, setMaxMinValue] = useState({ min: 0, max: 6000 });
+  const [maxMinValue, setMaxMinValue] = useState({ min: 0, max: 4500 });
   const [chartStats, setChartStats] = useState([true, true, true]);
   const [chartView, setChartView] = useState([true, true, true]);
+  const [weather, setWeather] = useState(26);
 
   const findMaxInObjectArray = (data, method) => {
     if (method === "max")
@@ -59,6 +61,7 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
   };
 
   useEffect(() => {
+    setWeather(30.7);
     setMaxMinValue({
       min: findMaxInObjectArray(data, "min").y,
       max: findMaxInObjectArray(data, "max").y,
@@ -139,14 +142,14 @@ const ChartView = ({ showHeader, toggleCompare, compare }) => {
         />
         <div className="chartStatInfoC">
           <WbSunny style={{ color: "yellow" }} />
-          <p>26 °C</p>
+          <p>{weather} °C</p>
         </div>
       </div>
 
       <FlexibleXYPlot
         height={500}
         xDomain={[0, 24]}
-        yDomain={[1500, 6000]}
+        yDomain={[1500, 4500]}
         margin={50}
         onMouseEnter={() => {
           setShowIndicator(true);
